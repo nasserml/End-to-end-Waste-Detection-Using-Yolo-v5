@@ -6,6 +6,18 @@ import base64
 from wasteDetection.exception import AppException
 from wasteDetection.logger import logging
 
+"""
+    Reads a YAML file and returns its contents as a dictionary.
+
+    Parameters:
+        file_path (str): The path to the YAML file.
+
+    Returns:
+        dict: The contents of the YAML file as a dictionary.
+
+    Raises:
+        AppException: If an error occurs while reading the YAML file.
+"""
 
 def read_yaml_file(file_path: str) -> dict:
     try:
@@ -19,6 +31,18 @@ def read_yaml_file(file_path: str) -> dict:
 
 
 
+"""
+    Writes the given content as YAML to the specified file path.
+
+    Parameters:
+        file_path (str): The path of the file to write the YAML content to.
+        content (object): The content to write as YAML.
+        replace (bool, optional): If set to True, replaces the file if it already exists. Defaults to False.
+
+    Returns:
+        None
+"""
+    
 def write_yaml_file(file_path: str, content: object, replace: bool = False) -> None:
     try:
         if replace:
@@ -52,7 +76,15 @@ def decodeImage(imgstring, fileName):
         f.write(imgdata)
         f.close()
 
+    """
+    Encodes an image file into base64 format.
 
+    Args:
+        croppedImagePath (str): The path to the cropped image file.
+
+    Returns:
+        bytes: The image file encoded in base64 format.
+    """
 def encodeImageIntoBase64(croppedImagePath):
     with open(croppedImagePath, "rb") as f:
         return base64.b64encode(f.read())
